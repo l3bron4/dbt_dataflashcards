@@ -3,6 +3,8 @@ version: 2
 seeds:
   - name: raw_questions
     description: "google sheet document with flashcards"
+    docs: # changed to config in v1.10
+        node_color: 'purple'
     columns:
       - name: id_unique
         description: this is the primary key, it includes the base question number combines with the version number (q__id_radical.version)

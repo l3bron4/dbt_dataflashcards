@@ -14,5 +14,3 @@ sources:
               count: 2
               period: day
           loaded_at_field: ingested_at
-      - name: dim_ref_questions_gsheet
-        description: google sheet document with flashcards, id, questions and answers texts. All history of version are inside.
