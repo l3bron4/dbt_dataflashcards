@@ -1,0 +1,16 @@
+sources:
+  - name: raw_data_dataflashcards
+    database: my-project-florent-bq  
+    schema: raw_data_dataflashcards  
+    tables:
+      - name: analytics_promo_raw
+        description: link to GCP firebase database witch save application data activities such as log, questions impressions, pass or fail, date and device informations
+        config:
+          freshness:
+            warn_after:
+              count: 1
+              period: day
+            error_after:
+              count: 2
+              period: day
+          loaded_at_field: ingested_at

@@ -1,0 +1,201 @@
+id_unique,id_radical,version,categorie,recto,verso,date_creation
+q_001.1,q_001,1,SQL,Comment extraire l'année d'une date ?,"EXTRACT(YEAR FROM ma_date) ou DATE_TRUNC(ma_date , YEAR).",25/03/2026
+q_002.1,q_002,1,SQL,Différence entre NULL et chaîne vide '' ?,NULL est l'absence de valeur. '_' est une valeur existante mais vide. NULL ne compte pas !,25/03/2026
+q_003.1,q_003,1,SQL,Comment transformer des lignes en colonnes ?,Via un PIVOT ou des CASE WHEN agrégés.,25/03/2026
+q_004.1,q_004,1,SQL,Quel est l'ordre d'exécution réel d'une requête SQL ?,"0, CTE 1. FROM/JOIN/UNNEST, 2. WHERE, 3. GROUP BY, 4. HAVING, 5. WINDOW, 6. SELECT, 7. DISTINCT, 8. ORDER BY, 9. LIMIT.",25/03/2026
+q_005.1,q_005,1,SQL,Comment dédoublonner avec une Window Function ?,Utilise QUALIFY ROW_NUMBER() OVER(PARTITION BY <...> ORDER BY date DESC) = 1.,25/03/2026
+q_006.1,q_006,1,SQL,À quoi sert la fonction COALESCE ?,Elle remplace la première valeur NULL rencontrée par une valeur par défaut choisie.,25/03/2026
+q_007.1,q_007,1,SQL,ROW_NUMBER() vs RANK() ?,"ROW_NUMBER() donne un index unique (1,2,3). RANK() donne le même rang en cas d'égalité (1,2,2,4).",25/03/2026
+q_008.1,q_008,1,SQL,À quoi servent LAG() et LEAD() ?,"LAG accède à la ligne précédente, LEAD accède à la ligne suivante dans une partition.",25/03/2026
+q_009.1,q_009,1,SQL,ROW_NUMBER() vs RANK() vs DENSE_RANK() ?,"ROW_NUMBER : Numérotation continue (1,2,3). RANK : Sauts en cas d'égalité (1,2,2,4). DENSE_RANK : Pas de saut (1,2,2,3).",25/03/2026
+q_010.1,q_010,1,SQL,À quoi sert la clause QUALIFY ?,"À filtrer le résultat d'une Window Function directement (ex: QUALIFY ROW_NUMBER() = 1), évitant ainsi une sous-requête.",25/03/2026
+q_011.1,q_011,1,SQL,Différence entre WHERE et HAVING ?,WHERE filtre les lignes AVANT l'agrégation. HAVING filtre les groupes APRÈS le GROUP BY.,25/03/2026
+q_012.1,q_012,1,SQL,Qu'est-ce que le COALESCE ?,"Une fonction qui retourne la première valeur non nulle d'une liste (ex: COALESCE(tel, email, 'Inconnu')).",25/03/2026
+q_013.1,q_013,1,SQL,À quoi servent LAG() et LEAD() ?,"Ce sont des window functions. LAG accède à la ligne précédente. LEAD accède à la ligne suivante. Vital pour calculer des évolutions (%M-1, MoM, YoY).",25/03/2026
+q_014.1,q_014,1,SQL,Différence entre INNER JOIN et LEFT JOIN ?,"INNER : Garde uniquement les lignes communes dans les deux tables à la clé de jointure. LEFT : Garde tout de la table de gauche, complète avec des lignes communes avec la table de droite (INNER).",25/03/2026
+q_015.1,q_015,1,SQL,Qu'est-ce qu'une CTE (Common Table Expression) ?,"Un bloc de code temporaire défini par WITH, plus lisible qu'une sous-requête imbriquée. Celle-ci s'execute avant la requete final",25/03/2026
+q_016.1,q_016,1,SQL,À quoi sert la fonction CAST() ?,"À modifier le type de donnée d'une colonne (ex: transformer une chaîne string '2023-01-01' en type DATE). Ou un FLOAT en INT CAST(6,0 AS INT64)",25/03/2026
+q_017.1,q_017,1,SQL,Différence entre COUNT(*) et COUNT(colonne) ?,COUNT(*) compte toutes les lignes. COUNT(colonne) ignore les valeurs NULL de cette colonne.,25/03/2026
+q_018.1,q_018,1,SQL,Qu'est-ce qu'un CROSS JOIN ?,Un produit cartésien : chaque ligne de A est associée à chaque ligne de B. Attention à l'explosion du volume !,25/03/2026
+q_019.1,q_019,1,SQL,À quoi sert la clause PARTITION BY ?,À définir des groupes de calcul pour une Window Function sans réduire le nombre de lignes (contrairement au GROUP BY).,25/03/2026
+q_020.1,q_020,1,SQL,Comment extraire l'année d'une date ?,"EXTRACT(YEAR FROM ma_date) ou DATE_TRUNC('year', ma_date).",25/03/2026
+q_021.1,q_021,1,SQL,Différence entre NULL et chaîne vide '' ?,NULL est l'absence de valeur. '' est une valeur existante mais vide. Très important pour les calculs !,25/03/2026
+q_022.1,q_022,1,SQL,Comment transformer des lignes en colonnes ?,Via un PIVOT ou des CASE WHEN agrégés.,25/03/2026
+q_023.1,q_023,1,SQL,Quelles sont les 3 étapes (ou fonctions) pour parser un champ JSON complexe contenant un tableau d'objets ?,1. JSON_EXTRACT_ARRAY pour isoler le tableau. 2. UNNEST pour éclater le tableau en lignes. 3. JSON_VALUE pour extraire les clés de chaque objet,25/03/2026
+q_024.1,q_024,1,SQL,Quelle est la fonction principale pour extraire une valeur simple (String/Int) d'un champ JSON dans BigQuery ?,"JSON_VALUE(champ_json, '$.ma_cle')",25/03/2026
+q_025.1,q_025,1,SQL,Structure d'un CASE WHEN ?,CASE WHEN condition THEN result ELSE default END.,25/03/2026
+q_026.1,q_026,1,SQL,Cite 3 raisons majeures pour lesquelles le SELECT * est proscrit en production ?,1. Coût (scan de données inutile). 2. Performance (latence réseau/mémoire). 3. Maintenance (fragilité face aux changements de schéma).,25/03/2026
+q_027.1,q_027,1,SQL,À quoi sert la clause DISTINCT ?,Supprime les doublons du résultat final pour ne garder que les combinaisons de lignes uniques.,25/03/2026
+q_028.1,q_028,1,SQL,Différence entre DATE_TRUNC et DATE_DIFF ?,"TRUNC arrondit une date. DIFF calcule l'écart (en jours, mois, ans) entre deux dates distinctes.",25/03/2026
+q_029.1,q_029,1,SQL,Quelle est la différence entre les types INT et FLOAT ?,INT stocke des nombres entiers (ex: 10). FLOAT stocke des nombres à virgule flottante (ex: 10.5).,25/03/2026
+q_030.1,q_030,1,SQL,Comment combiner deux chaînes de caractères en une seule ?,"Utilise la fonction CONCAT(str1, str2) ou l'opérateur de concaténation || selon l'entrepôt.",25/03/2026
+q_031.1,q_031,1,SQL,En Regex à quoi correspond le % et le _?,% est n'importe quelle caractère de longuer 0+ et _ c'est 1 caractères. Exemple mail '%@%.__%',25/03/2026
+q_032.1,q_032,1,SQL,Comment consulter la structure (DDL) d'une table dans BigQuery ?,En interrogeant la vue système : SELECT ddl FROM dataset.INFORMATION_SCHEMA.TABLES WHERE table_name = '...';,25/03/2026
+q_033.1,q_033,1,SQL,À quoi sert la fonction COUNT(*) ?,"Compte le nombre total de lignes dans une table ou un groupe, incluant les lignes avec des valeurs NULL.",25/03/2026
+q_034.1,q_034,1,SQL,Comment trouver la valeur la plus élevée d'une colonne ?,Utilise la fonction d'agrégation MAX(nom_colonne).,25/03/2026
+q_035.1,q_035,1,SQL,À quoi sert l'opérateur IN ?,"Filtre les lignes dont la valeur correspond à un élément présent dans une liste spécifiée (ex: IN ('A', 'B')). Une sorte de 'AND'",25/03/2026
+q_036.1,q_036,1,SQL,Pourquoi utilise-t-on le mot-clé AS ?,"Pour créer un alias, renommant temporairement une colonne ou une table pour rendre le code plus lisible.",25/03/2026
+q_037.1,q_037,1,SQL,Que fait SELECT * EXCEPT(col_a) ?,Sélectionne toutes les colonnes de la table à l'exception de celle(s) précisée(s) entre parenthèses.,25/03/2026
+q_038.1,q_038,1,SQL,Comment filtrer une plage de valeurs (ex: entre 10 et 20 INCLUS) ?,Utilise la clause WHERE colonne BETWEEN 10 AND 20.,25/03/2026
+q_039.1,q_039,1,SQL,Comment exclure les valeurs manquantes d'un résultat ?,Utilise la condition WHERE colonne IS NOT NULL.,25/03/2026
+q_040.1,q_040,1,SQL,À quoi sert la fonction ROUND() ?,"À arrondir un nombre à un certain nombre de décimales. Exemple : ROUND(prix, 2).",25/03/2026
+q_041.1,q_041,1,SQL,Comment trier les résultats par ordre décroissant ?,Utilise la clause ORDER BY nom_colonne DESC.,25/03/2026
+q_042.1,q_042,1,SQL,Structure de base d'une Window Function ?,FONCTION() OVER(PARTITION BY col_a ORDER BY col_b).,25/03/2026
+q_043.1,q_043,1,SQL,Comment numéroter les lignes au sein d'un groupe ?,Utilise ROW_NUMBER() OVER(PARTITION BY groupe ORDER BY date DESC).,25/03/2026
+q_044.1,q_044,1,SQL,Quelle est l'utilité de CURRENT_DATE ?,Retourne la date actuelle du système lors de l'exécution de la requête. La zone UTC peut être préciser en argument,25/03/2026
+q_045.1,q_045,1,SQL,Différence entre CREATE TABLE et CREATE VIEW ?,TABLE stocke les données physiquement (coût stockage). VIEW est une requête enregistrée calculée à la demande.,25/03/2026
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+q_051.1,q_051,1,dbt,À quoi sert la fonction {{ ref() }} ?,1. Crée les dépendances dans le DAG. 2. Gère automatiquement la portabilité (bascule entre dev et prod) avec la configuration de profiles.yml.,25/03/2026
+q_052.1,q_052,1,dbt,Quelle est la différence entre ref() et source() ?,ref() pointe vers un modèle dbt. source() pointe vers une table brute externe définie dans un fichier nommé source.yml en YAML.,25/03/2026
+q_053.1,q_053,1,dbt,Qu'est-ce que le DAG ?,Directed Acyclic Graph. C'est le graphe qui ordonne l'exécution de tes modèles sans boucles infinies.,25/03/2026
+q_054.1,q_054,1,dbt,Pour quel type de données l'usage des Seeds est-il recommandé ?,"Pour des données statiques ou qui changent très rarement (ex: codes pays, liste des départements, catégories de produits fixes). Format CSV.",25/03/2026
+q_055.1,q_055,1,dbt,Cite 3 raisons de ne pas utiliser les Seeds pour des données volumineuses ou sensibles,Parce que les seeds sont visibles dans les git : 1. Sécurité (exposition des données perso PII). 2. Performance (lenteur des commandes Git en CI). 3. Scalabilité (Git n'est pas un outil de stockage de base de données).,25/03/2026
+q_056.1,q_056,1,dbt,Comment définit-on la matérialisation d'un modèle dbt directement dans son fichier .sql ?,Via le bloc de configuration : {{ config(materialized='table') }} (ou 'view') directement dans le modèle ou dans le projet.yml pour definir la config par défaut suivant les dossiers models.,25/03/2026
+q_057.1,q_057,1,dbt,Quelles sont les 4 valeurs principales que peut prendre l'argument materialized dans un bloc config() ?,"view (par défaut), table, incremental et ephemeral.",25/03/2026
+q_058.1,q_058,1,dbt,Qu'est-ce qu'un modèle 'Incremental' ?,Un modèle qui n'ajoute que les nouvelles données depuis le dernier run au lieu de reconstruire toute la table. Vital pour les gros volumes.,25/03/2026
+q_059.1,q_059,1,dbt,Qu'est-ce qu'un modèle 'Ephemeral' ?,Un modèle qui s'insère comme une CTE. Il permet de 'nettoyer' l'entrepôt en masquant les étapes de calcul intermédiaires qui n'ont pas d'intérêt pour les utilisateurs finaux.,25/03/2026
+q_060.1,q_060,1,dbt,Comment définir une clé primaire unique dans dbt ?,Via un test 'unique' dans le .yml (souvent schema.yml) ou via une surrogate key (hachage).,25/03/2026
+q_061.1,q_061,1,dbt,Qu'est-ce qu'un SNAPSHOT ?,Un outil pour historiser les changements (SCD Type 2) sur une table source (ex: suivi du statut d'une commande).,25/03/2026
+q_062.1,q_062,1,dbt,Quelles sont les deux stratégies possibles pour détecter un changement dans un Snapshot ?,1. timestamp (utilise une colonne de date de mise à jour). 2. check (compare une liste de colonnes spécifiques),25/03/2026
+q_063.1,q_063,1,dbt,À quoi sert le dossier macros/ ?,À stocker des fonctions Jinja réutilisables pour automatiser le SQL.,25/03/2026
+q_064.1,q_064,1,dbt,"Comment installer un package externe (ex: dbt_utils, codegen) ?",1. Lister dans packages.yml. packages: - package: dbt-labs/dbt_utils version: 0.7.12.  2. Lancer la commande 'dbt deps'.,25/03/2026
+q_065.1,q_065,1,dbt,Différence entre 'dbt run' et 'dbt build' ?,run : exécute seulement les modèles. build : exécute les modèles + les tests + les snapshots + les seeds.,25/03/2026
+q_066.1,q_066,1,dbt,Qu'est-ce que le fichier manifest.json ?,"C'est un fichier généré automatiquement qui contient la description complète de l'architecture, des nœuds, son état et des dépendances du projet. Situé dans le dossier target.",25/03/2026
+q_067.1,q_067,1,dbt,Comment tester la fraîcheur d'une source ?, Via la configuration 'freshness' dans le YAML de la source (warn_after / error_after). Puis lancer dbt source freshness,25/03/2026
+q_068.1,q_068,1,dbt,À quoi sert principalement la variable 'target' ?,"À identifier l'environnement de destination (dev, prod, qa) via le fichier profiles.yml pour adapter la connexion et le comportement de dbt.",25/03/2026
+q_069.1,q_069,1,dbt,Quelles sont les 4 couches classiques d'un projet dbt ?,"1. Sources (Brut), 2. Staging (Nettoyage), 3. Intermediate (Logique complexe), 4. Marts (Business).",25/03/2026
+q_070.1,q_070,1,dbt,Quelle est la différence entre ref() et source() ?,Ref() lie deux modèles dbt (crée le DAG). Source() lie dbt à une table brute externe.,25/03/2026
+q_071.1,q_071,1,dbt,À quoi sert le tiret dans {%- ou -%}?,C'est le 'whitespace control' : il supprime les espaces et sauts de ligne inutiles dans le SQL compilé.,25/03/2026
+q_072.1,q_072,1,dbt,Qu'est-ce que le 'Source Freshness' ?,Un test qui vérifie si les données sources ont été mises à jour récemment (ex: < 24h).,25/03/2026
+q_073.1,q_073,1,dbt,Quels sont les 4 tests génériques de dbt ?,"Unique, Not_null, Accepted_values, Relationships.",25/03/2026
+q_074.1,q_074,1,dbt,À quoi sert le tiret dans {%- ou -%} ?,C'est le 'whitespace control' : il supprime les espaces et sauts de ligne inutiles dans le SQL compilé.,25/03/2026
+q_075.1,q_075,1,dbt,Quelle commande permet de savoir si les données sources ingérées sont récentes?,dbt source freshness.,25/03/2026
+q_076.1,q_076,1,dbt,À quoi sert le tiret dans {%- ... -%} ?,C'est le 'whitespace control' : il supprime les espaces et sauts de ligne inutiles dans le SQL final. Il facile donc la lecture du SQL compilé.,25/03/2026
+q_077.1,q_077,1,dbt,Comment créer une variable Jinja locale ?,Utilise {% set ma_var = 'valeur' %}.,25/03/2026
+q_078.1,q_078,1,dbt,Comment appeler en Jinja une variable globale définie dans dbt_project.yml ?,Via la fonction {{ var(''nom_de_la_variable') }}.,25/03/2026
+q_079.1,q_079,1,dbt,Qu'est-ce que l'objet 'loop' dans une boucle for Jinja ?,"Un objet contenant des infos sur l'itération (loop.first, loop.last, loop.index).",25/03/2026
+q_080.1,q_080,1,dbt,Quel bloc Jinja spécifique doit-on ajouter dans un modèle incremental pour filtrer les données déjà existantes ?,Le bloc {% if is_incremental() %}. Il permet de n'ajouter que les lignes dont la date est supérieure à la date max déjà présente en table.,25/03/2026
+q_081.1,q_081,1,dbt,Comment écrire un commentaire visible uniquement par Jinja ?,Utilise la syntaxe {# mon commentaire #}.,25/03/2026
+q_082.1,q_082,1,dbt,Qu'est-ce qu'une 'Surrogate Key' (clé de substitution)  ?,C'est une clé unique générée artificiellement (souvent par hachage MD5) pour identifier une ligne quand aucune colonne seul ne le permet (granularité à plusieurs colonnes).,25/03/2026
+q_083.1,q_083,1,dbt,Comment documenter un modèle ?,Via la propriété 'description' dans un fichier .yml ou via des blocs de doc .md externes. Puis lancer dbt docs generate.,25/03/2026
+q_084.1,q_084,1,dbt,Où doit-on rédiger la documentation des modèles pour qu'elle reste proche du code SQL ? ," Dans les fichiers .yml (souvent schema.yml), idéalement situés dans le même dossier que les modèles SQL concernés.",25/03/2026
+q_085.1,q_085,1,dbt,Règle d'or du Staging ?,"Une table de staging par table source. Pas de jointures complexes ici, juste du nettoyage technique.",25/03/2026
+q_086.1,q_086,1,dbt,Quelle commande permet de ne lancer que les modèles modifiés ?,dbt run --select state:modified (nécessite un fichier manifest.json).,25/03/2026
+q_087.1,q_087,1,dbt,Quelle est la différence de syntaxe entre afficher une variable et exécuter une instruction (ex: set) ? ,Expression (Afficher) : {{ ma_variable }} // Instruction (Action) : {% set x = 1 %} ou {% for ... %},25/03/2026
+q_088.1,q_088,1,dbt,Qu'est-ce que l'ADLC dans l'écosystème dbt et à quoi correspond-il techniquement ? ,Analytics Development Life Cycle. C'est l'équivalent du CI/CD pour la data : Développement  // Test & Revue (CI). // Déploiement & Monitoring (CD).,25/03/2026
+q_089.1,q_089,1,dbt,Quels sont les rôles respectifs des fichiers dbt_project.yml et profiles.yml ?  ,"dbt_project.yml : Configuration globale du projet (nom, chemins, modèles). // profiles.yml : Informations de connexion au Data Warehouse (target, database, user, pass). Sert de pont entre dbt et la DB.",25/03/2026
+q_090.1,q_090,1,dbt,Quelle est la différence entre un fichier sources.yml et un fichier schema.yml ?  ,Sources : Définit les tables de données brutes externes (Input). // Schema : Utilisé pour documenter (description: ) et lister les tests les modèles créés (Output).,25/03/2026
+q_091.1,q_091,1,dbt,Quelle est la différence entre un Generic Test et un Singular Test ?  ,"Generic : Test réutilisable défini dans le YAML (ex: unique, not_null). // Singular : Une requête SQL personnalisée dans le dossier tests/ qui échoue si elle renvoie des lignes.",25/03/2026
+q_092.1,q_092,1,dbt,"Dans une boucle {% for %}, à quoi servent loop.index et loop.index0 ?","Ce sont des compteurs d'itération : index commence à 1, tandis que index0 commence à 0.",25/03/2026
+q_093.1,q_093,1,dbt,Quelle est la structure complète d'un bloc if en Jinja ? ,{% if condition %}  -- code si vrai{% else %}  -- code si faux {% endif %},25/03/2026
+q_094.1,q_094,1,dbt,Quelle est la syntaxe pour définir une liste de fruits en Jinja et afficher le premier élément ?,"Définition : {% set fruits = ['pomme', 'banane'] %}. Appel : {{ fruits[0] }}.",25/03/2026
+q_095.1,q_095,1,dbt,"Dans le dictionnaire {% set order = {'status' : 'send', 'date' : '2023'} %} comment accède-t-on à la valeur d'une clé 'status' ?","Soit par la notation pointée {{ order.status }}, soit par l'indexation {{ order['status'] }}.",25/03/2026
+q_096.1,q_096,1,dbt,Quelle est la structure de base d'une boucle for pour parcourir une liste ou une plage de nombres ? ,{% for element in liste %}  {{ element }} {% endfor %} --(Pour une plage : {% for i in range(10) %}),25/03/2026
+q_097.1,q_097,1,dbt,Écris la structure de base d'une macro nommée cents_to_dollars,{% macro cents_to_dollars(column_name) %} ({{ column_name }} / 100) {% endmacro %},25/03/2026
+q_098.1,q_098,1,dbt,Quelle est la différence entre une Macro dbt et une UDF (User Defined Function) ? ,Une Macro est écrite en Jinja/SQL et compilée par dbt avant l'exécution. Une UDF est une fonction créée et stockée directement sur le Data Warehouse,25/03/2026
+q_099.1,q_099,1,dbt,Cite 5 stratégies de chargement incrémental dans dbt ? ,1. append : Ajoute les nouvelles lignes. 2. merge : Met à jour ou insère (nécessite une unique_key). 3. delete+insert : Supprime les anciens enregistrements et insère les nouveaux. 4. insert_overwrite : Remplace des partitions entières. 5. microbatch : Traitement par fenêtres temporelles isolées.,25/03/2026
+q_100.1,q_100,1,dbt,À quoi sert le dossier analyses/ dans un projet dbt ? ,À stocker des requêtes SQL/Jinja qui ne sont pas des modèles. Elles sont compilées pour être copiées-collées dans le DW pour du reporting ad-hoc ou des Health Checks. Pratique comme une bibliothqèes de templates et snippets,25/03/2026
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+q_111.1,q_111,1,Business,Qu'est-ce qu'une analyse de Cohorte ?,L'étude d'un groupe d'utilisateurs ayant un point commun (ex: date d'inscription) au fil du temps.,25/03/2026
+q_112.1,q_112,1,Business,Quelle est la différence entre une tendance et une saisonnalité ?,"La tendance est l'évolution globale à long terme (hausse ou baisse), tandis que la saisonnalité est une fluctuation cyclique 'prévisible' à court ou moyen terme (saison, vacances, weekend...)",25/03/2026
+q_113.1,q_113,1,Business,Différence entre corrélation et causalité ?,Corrélation : Deux chiffres bougent ensemble. Causalité : L'un provoque l'autre. Ne jamais confondre !,25/03/2026
+q_114.1,q_114,1,Business,Qu'est-ce que l'A/B Testing ?,Une expérience où deux variantes (d'une interface / produit) sont testées pour déterminer laquelle produit le meilleur résultat.,25/03/2026
+q_115.1,q_115,1,Business,Qu'est-ce que le 'Conversion Rate' ?,Nombre de conversions / Nombre total de visiteurs * 100. On peut le retrouver à plusieurs étapes d'un funnel.,25/03/2026
+q_116.1,q_116,1,Business,Marketing : Quelle est la différence entre Clic et Impression ?,"Impression : L'annonce est affichée. Clic : L'utilisateur interagit. L'un mesure la vue, l'autre l'engagement.",25/03/2026
+q_117.1,q_117,1,Business,Marketing : Qu'est-ce que le CTR (Click-Through Rate) ?,Formule : (Clics / Impressions) x 100. Ce taux mesure l'efficacité et la pertinence d'une annonce.,25/03/2026
+q_118.1,q_118,1,Business,Ventes : Différence entre Prospect et Client ?,Prospect : Acheteur potentiel identifié. Client : Prospect ayant effectué une conversion (achat/sales) concrète.,25/03/2026
+q_119.1,q_119,1,Business,Logistique : 'Ready to ship' vs 'Ready to deliver' ?,Ready to ship : Prêt à quitter l'entrepôt. Ready to deliver : Prêt pour la remise finale (dernier kilomètre).,25/03/2026
+q_120.1,q_120,1,Business,Analyse Métier : Quelle sont les premières étapes face à un problème ?,"1. Ne pas coder en SQL immédiatement. 2.Cadrer, poser des questions et comprendre le contexte 3.Démontrer un raisonnement structuré via un framework d'investigation.",25/03/2026
+q_121.1,q_121,1,Business,Framework de pensé : Cite 5 axes d'approche structurée ?,1. Processus (Funnel/Etapes/Chaîne de valeur). 2. Acteurs (Interne/Externe+Liste Métiers). 3. Perspective (A la place du client). 4 Décomposer la métrique. 5. Qualifier ou Affiner (Quoi / Qui / Ou / Quand ),25/03/2026
+q_122.1,q_122,1,Business,Etude de cas : Quelles sont les 4 questions structurantes ?,1. Tu veux savoir quoi ? 2. Pourquoi ? 3. Et alors ? (conséquence). 4. Comment mesurer ?,25/03/2026
+q_123.1,q_123,1,Business,"Qualifier : En quoi consiste la méthode 'Quoi, Qui, Où, Quand' ?","Permet de préciser la question, d'affiner le périmètre (scope) et de qualifier le problème avant l'investigation.",25/03/2026
+q_124.1,q_124,1,Business,Problème sur les données (ex : écarts) : Quels sont les 2 premières étapes du process ?,"1. Communication avec les stakeholders (verifier la definition métier). 2. Technique Data (vérifier le pipeline : ingestion, nettoyage, modélisation).",25/03/2026
+q_125.1,q_125,1,Business,"Problème business (ex : retards, abandons) : Comment procéder en 4 étapes ?","1. Communiquer (pourquoi est-ce important, comment ça marche, ...?) 2. Quantifier le problème et évaluer l'impact 3. Préciser, affiner, qualifier (quoi, qui, ou, quand) 4. Investiguer (framework de pensée)",25/03/2026
+q_126.1,q_126,1,Business,Question Business : Pourquoi échanger avec l'équipe/stakeholders avant le SQL ?,"Pour comprendre le processus actuel, l'importance du problème (affiner, qualifier, combien ça nous coûte?) et recueillir les hypothèses du terrain.",25/03/2026
+q_127.1,q_127,1,Business,Quantifier : Comment quantifier un problème ?,"En calculant l'ampleur en volume (NB), en pourcentage (%), en délais ou en coût financier direct (combien ça nous coûte?).",25/03/2026
+q_128.1,q_128,1,Business,En entretien - Questions Ouvertes : le KPI baisse pourquoi ? Quels peuvent être les raisons ?  Quelle est la stratégie pour les résoudre ?,"1. Contexte 'de la boite' et de la demande 2. Préciser la question, Quantifier le pb 3.Découper la question floue en sous-questions précises via des hypothèses mesurables 4. Deriver des KPIs (3 ou 4 pertinents et variés).",25/03/2026
+q_129.1,q_129,1,Business,Contexte : Pourquoi analyser la monétisation ?,Comprendre comment l'entreprise génère du revenu permet de determiner l'importance business de l'analyse.,25/03/2026
+q_130.1,q_130,1,Business,Hypothèses : Cite 5 méthodes pour en générer ?,1. Décomposer la métrique. 2. Approche Interne/Externe + Liste metiers. 3. A la place du Client. 4. Analyse du Funnel (étapes). 5. Qualifier ou Affiner (Quoi / Qui / Ou / Quand ),25/03/2026
+q_131.1,q_131,1,Business,KPIs : Quel est leur rôle par rapport aux hypothèses business ?,Ils servent à confirmer ou infirmer scientifiquement les hypothèses générées lors de la phase de réflexion.,25/03/2026
+q_132.1,q_132,1,Business,KPI en baisse : Cite 4 facteurs Internes typiques ?,"Bugs techniques, problèmes de tracking, fin de campagne marketing, modifications de pricing ou autres changement de process internes",25/03/2026
+q_133.1,q_133,1,Business,KPI en baisse : Cite 3 facteurs Externes typiques ?,"Saisonnalité, événement majeur, actions de la concurrence ou changements macro-économiques.",25/03/2026
+q_134.1,q_134,1,Business,Investigation : Pourquoi utiliser l'approche Funnel/Etapes ?,Pour identifier à quelle étape précise de la chaîne de valeur se situe le goulot d'étranglement.,25/03/2026
+q_135.1,q_135,1,Business,Etude de cas : Pourquoi se demander 'Et alors ?' ?,Pour forcer l'analyse vers la conséquence business réelle et éviter de rester sur un simple constat technique => faire des recommandations,25/03/2026
+q_136.1,q_136,1,Business,En entretien - Question Business : Que faire si des tables/colonnes brutes sont fournies ?,1. Ne pas coder. 2. Organiser et catégoriser les colonnes pour démontrer sa compréhension de la structure des données.,25/03/2026
+q_137.1,q_137,1,Business,Cite 3 KPI d'inventaire (Inventory),"Opening (stock au début), Closing (stock restant à la fin). Le Turnover Rate mesure combien de fois le stock a été renouvelé sur une période.",25/03/2026
+q_138.1,q_138,1,Business,KPI,Key Performance Indicator. Un indicateur clé de performance qui sert de 'tableau de bord' sur le long terme pour vérifier si l'entreprise avance vers ses objectifs stratégiques.,25/03/2026
+q_139.1,q_139,1,Business,OKR vs KPI ?,"Les KPI sont des indicateurs de suivi continus et stables. Les OKR sont des objectifs de rupture, limités dans le temps (souvent au trimestre).",25/03/2026
+q_140.1,q_140,1,Business,Quel est l'ordre logique des services dans un parcours client standard (le tunnel) ?,Marketing (prospect) -> Sales (client) -> Produit (livraison) -> Care (rétention) -> Ops/Finance (fluidité globale).,25/03/2026
+q_141.1,q_141,1,Business,Les 3 Piliers d'un business modèle,"L'acquisition génère le volume de revenus, le produit maximise la valeur par client, et la rétention sécurise la récurrence (LTV).",25/03/2026
+q_142.1,q_142,1,Business,C'est quoi une Impression ?,Le nombre de fois qu'un contenu ou une pub est affiché sur un écran.,25/03/2026
+q_143.1,q_143,1,Business,C'est quoi un Prospect ?,Un contact ou une entreprise identifiée comme un client potentiel.,25/03/2026
+q_144.1,q_144,1,Business,C'est quoi le Panier Moyen ?,Le montant moyen dépensé par les clients lors d'une commande.,25/03/2026
+q_145.1,q_145,1,Business,C'est quoi le KYC (Know Your Customer) ?,Le processus légal de vérification de l'identité d'un client (ex: pour une banque).,25/03/2026
+q_146.1,q_146,1,Business,C'est quoi le NPS (Net Promoter Score) ?,Un score mesurant la satisfaction client via une seule question : 'Recommanderiez-vous ce service ?',25/03/2026
+q_147.1,q_147,1,Business,Rétention vs Churn ?,"La rétention est le taux de clients que l'on garde, le churn est le taux de clients que l'on perd.",25/03/2026
+q_148.1,q_148,1,Business,C'est quoi la LTV (Life Time Value) ?,Le profit total généré par un client pendant toute la durée de sa relation avec la boîte.,25/03/2026
+q_149.1,q_149,1,Business,C'est quoi le CPA / CAC ?,Le coût moyen dépensé en marketing pour acquérir un nouveau client.,25/03/2026
+q_150.1,q_150,1,Business,C'est quoi le SEO ?,L'optimisation d'un site pour apparaître gratuitement dans les premiers résultats Google.,25/03/2026
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+q_161.1,q_161,1,Analytics Method,Comment répartir son temps pour les (4) étapes du Dashboarding ?,"Cadrage / Préparation (50%) Problématique claire → Tant que vous comprenez pas le problème, Ne pas commencer. Pourquoi ? Quoi ? Et Alors ?, SQL (20%), Construire le dashboard (10%), Vérifier les chiffres (20%). ",25/03/2026
+q_162.1,q_162,1,Analytics Method,Quelles sont les 3 niveaux d'un dashboard bien construit ?,"De haut en bas. 1. Synthèse (3/4 KPIs flash). 2. Explication (Courbes d'évolution, répartition). 3. Exploration (Tableaux granulaires, graphique à plusieurs dimensions).",25/03/2026
+q_163.1,q_163,1,Analytics Method,Que faire en cas d'écart de chiffres entre services ?,1. Communiquer avec les métiers pour voir les définitions et aligner si possible (ex: date de commande vs date de facture). 2. Voir si l'ingestion est correcte 3. Voir si le nettoyage et autres transformations sont conformes,25/03/2026
+q_164.1,q_164,1,Analytics Method,Comment structurer un Dashboard ?,"Structure en 'Entonnoir' : 1. KPIs globaux (Est-ce que tout va bien ?), 2. Tendances (Qu’est ce qui se passe ? pb / opportunités, où, quand, qui, quoi, … ?), Chaque graph réponds à une question 3. Tables granulaires exploratoires",25/03/2026
+q_165.1,q_165,1,Analytics Method,C'est quoi une clé primaire ?,C'est une colonne (ou plusieurs) qui permet d'identifier de manière unique une ligne de la table,25/03/2026
+q_166.1,q_166,1,Analytics Method,Qu'est-ce que la granularité d'une table ?,"La granularité c'est le niveau de détail (combinaison de colonnes) qui identifie une ligne unique, même sans clé primaire. '1 ligne par ...'",25/03/2026
+q_167.1,q_167,1,Analytics Method,Pourquoi faut-il absolument éviter les jointures N-N ?,Elles créent une 'explosion de lignes' (fan-out : multiplication de granularité) et faussent totalement les agrégations (SUM).,25/03/2026
+q_168.1,q_168,1,Analytics Method,C'est quoi un KPI - S.M.A.R.T. ?,"Spécifique, Mesurable, Atteignable, Réaliste, Temporellement défini.",25/03/2026
+q_169.1,q_169,1,Analytics Method,Différence entre Star Schema et Snowflake Schema ?,Star : Tables de dimensions jointes directement aux faits (simple). Snowflake : Dimensions normalisées (plus complexe).,25/03/2026
+q_170.1,q_170,1,Analytics Method,Pourquoi le cadrage prend-il 50% du temps ?,Parce qu'il vaut mieux une réponse approximative à la bonne question qu'une réponse parfaite à la mauvaise question.,25/03/2026
+q_171.1,q_171,1,Analytics Method,Modélisation Top-Down vs Bottom-Up ?,Top-Down : Partir des tables brutes et aller vers les tables pour les besoins metiers // Bottom-Up : Partir de la table finale revée et remonter dans les tables intermédiaires jusqu'au données brutes,25/03/2026
+q_172.1,q_172,1,Analytics Method,Quel est l'objectif principal de la documentation des modèles dans un projet (dbt) ?,Permettre aux utilisateurs de trouver leurs réponses en autonomie et faciliter l'intégration (onboarding) des nouveaux membres de l'équipe.,25/03/2026
+q_173.1,q_173,1,Analytics Method,"Compare la table et la view sur trois critères suivant : Stockage, Performance et Fraîcheur.",1. Table : Stockage (+) / Performance lecture (+++) / Fraîcheur (Limitée au dernier run). 2. View : Stockage (Négligeable) / Performance lecture (+) / Fraîcheur (Temps réel).,25/03/2026
+q_174.1,q_174,1,Analytics Method,"Dans la modélisation de données, quel est l'ordre logique de transformation ?",Sources (Brutes) ➔ Staging (Vues) [➔ Intermediate (Vues)] ➔ Marts (Tables) ➔ Reporting (Vues métiers).,25/03/2026
+q_175.1,q_175,1,Analytics Method,Quels sont les 3 axes majeurs à suivre pour améliorer un code SQL (Factorisation et Lisibilité) selon le principe DRY ?,"1. Lisibilité : Standardiser la forme (Indentation, MAJUSCULES pour le SQL, alias explicites). 2. Anti-Redondance : Centraliser les calculs et jointures répétées. 3. Réutilisabilité : Appliquer la règle d'une seule CTE par concept.",25/03/2026
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+q_181.1,q_181,1,Data Platform,ETL vs ELT ?,"ETL : Extraction - Transformation - Load : C'est plutôt l'ancien pipeline. ELT : Chargement brut puis transformation dans le DW (plus moderne/dbt), +disponibilité : pas limité par le frein du process ETL en amont, +rentable car moins de cout infrastructure de ETL, +flexibilité car la transformation peut devenir itératif .",25/03/2026
+q_182.1,q_182,1,Data Platform,Qu'est-ce qu'un Data Warehouse ?,"Un entrepôt de données structurées et optimisées pour l'analyse (ex: Snowflake, BigQuery, Redshift).",25/03/2026
+q_183.1,q_183,1,Data Platform,Data Lake vs Data Warehouse ?,Lake : Stockage brut (fichiers) plutôt pour le ML. D.Warehouse : Stockage structuré (tables SQL).,25/03/2026
+q_184.1,q_184,1,Data Platform,Qu'est-ce que la CI/CD pour la data ?,Continious Integration /Continious Delivery (FR: déploiement) : L'automatisation des tests et du déploiement à chaque modification du code SQL. Cela vient des bonnes pratiques DevOps en developpement logiciel,25/03/2026
+q_185.1,q_185,1,Data Platform,C'est quoi Airflow?,"Un framework Python utilisé par les Data Engineer pour orchestrer, planifier et surveiller des pipelines de données (workflows complet de l'ingestion à la BI).",25/03/2026
+q_186.1,q_186,1,Data Platform,Qu'est-ce que le 'Data Lineage' ?,"Le traçage du chemin de la donnée, de sa source brute jusqu'au dashboard final.",25/03/2026
+q_187.1,q_187,1,Data Platform,Cite 2 raisons d'utiliser des environnements (schémas) séparés (Dev/Prod),1// Pour tester de nouvelles transformations sans risquer d'altérer ou de supprimer les données utilisées par les rapports officiels de l'entreprise 2// travailler en parrallèle sans écraser le travail des autres .,25/03/2026
+q_188.1,q_188,1,Data Platform,Quel est le processus standard pour faire passer un changement du mode 'Dev' à la branche 'Main' ?,"Créer une Pull Request (PR), faire relire le code par un pair (Peer Review), et valider les tests de données avant la fusion (merge).",25/03/2026
+q_189.1,q_189,1,Data Platform,Table vs Vue : Quelles sont les différences majeures ?,"Table : Stockée les données physiquement (analyse performante et robuste, mais données moins fraiche) => C'est un objet physique. Vue : Calculée à chaque appel (fraîche mais plus lente) Elle stoke une requete SQL, c'est un objet logique.",25/03/2026
+q_190.1,q_190,1,Data Platform,Pourquoi dénormalise-t-on les données dans la couche finale (Marts) d'un pipeline ?,Pour simplifier l'accès aux données pour les utilisateurs métiers (pas de jointures complexes à faire) et accélérer l'affichage des rapports. Une 'Wide Table',25/03/2026
+q_191.1,q_191,1,Data Platform,C'est quoi le  JSON ?,Format texte léger pour échanger des données. Organisation basée sur des paires 'Clé : Valeur'. Les données sont stockées entre accolades {} pour les objets et crochets [] pour les listes (arrays).,25/03/2026
+q_192.1,q_192,1,Data Platform,C'est quoi un Framework,"Ensemble d'outils et de bibliothèques qui impose une structure de code pour garantir la rapidité, la sécurité et la maintenabilité du développement.",25/03/2026
+q_193.1,q_193,1,Data Platform,C'est quoi une API,Une API (application programming interface) est une interface logicielle qui permet de « connecter » un logiciel ou un service à un autre logiciel ou service afin d'échanger des données et des fonctionnalités..,25/03/2026
+q_194.1,q_194,1,Data Platform,Qu'est-ce qu'un Semantic Layer ? ,Une couche qui définit les métriques métier (ex: Chiffre d'Affaires) de manière centrale pour qu'elles soient identiques dans tous les outils de BI. Il garantit une 'Source Unique de Vérité',25/03/2026
+q_195.1,q_195,1,Data Platform,À quoi sert un outil comme Airbyte dans une architecture de données ?,"À extraire les données de sources variées (APIs, bases de données) et à les charger dans un entrepôt (Data Warehouse). C'est l'étape EL (Extract & Load).",25/03/2026
+q_196.1,q_196,1,Data Platform,Comment requêter une table partitionnée par date ?,Toujours inclure un filtre WHERE sur la colonne de partition (ex: WHERE date_commande > '2024-01-01') pour éviter de scanner toute la table. Pratique pour accélérer les requêtes et réduire les coûts de lecture dans les grandes tables,25/03/2026
+q_197.1,q_197,1,Data Platform,"Que fait le SQL INSERT INTO table VALUES ('A', 'B') ?",Elle ajoute une nouvelle ligne de données dans la table spécifiée.,25/03/2026
+q_198.1,q_198,1,Data Platform,Que fait le SQL DROP TABLE nom_table ?,Elle supprime définitivement la table ainsi que toutes les données qu'elle contient.,25/03/2026
