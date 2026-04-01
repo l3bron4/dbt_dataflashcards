@@ -1,0 +1,15 @@
+models:
+  - name: stg_raw_data_dataflashcards__analytics_promo_raw
+    columns:
+      - name: document_id
+        description: PK
+        tests:
+          - unique
+          - not_null
+  - name: stg_seed__raw_questions
+    columns:
+      - name: id_unique
+        description: PK
+        tests:
+          - unique
+          - not_null
