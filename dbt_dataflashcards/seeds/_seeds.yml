@@ -24,4 +24,4 @@ seeds:
       - name: verso
         description: the answer text
       - name: date_creation
-        description: when the question versions where created
+        description: when the question version where created
