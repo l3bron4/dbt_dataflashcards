@@ -1,0 +1,25 @@
+version: 2
+
+seeds:
+  - name: raw_questions
+    description: "google sheet document with flashcards"
+    columns:
+      - name: id_unique
+        description: this is the primary key, it includes the base question number combines with the version number (q__id_radical.version)
+        tests:
+          - unique
+          - not_null:
+              config:
+                severity: warn
+      - name: id_radical
+        description: many version of the same question exist, id_radical represent the base topic of the question
+      - name: version
+        description: with versions number of the base question
+      - name: categorie
+        description: to with categorie belong the question (sql, business...)
+      - name: recto
+        description: the question text
+      - name: verso
+        description: the answer text
+      - name: date_creation
+        description: when the question versions where created
