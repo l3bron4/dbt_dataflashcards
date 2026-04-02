@@ -12,9 +12,9 @@ renamed as (
         LENGTH(recto) AS question_length,
         verso as answer_text,
         LENGTH(verso) AS answer_length,
-        PARSE_DATE('%d/%m/%Y', date_creation) as created_at, --ligne qui plante
+        PARSE_DATE('%d/%m/%Y', date_creation) as created_at, 
     from source
-    where id_unique is not null -- Nettoyage des lignes vides que tu as détectées
+    where id_unique is not null -- remove null lines from csv source
 )
 
 select * from renamed
