@@ -9,8 +9,9 @@ source as (
 renamed as (
 
     select
-        pseudo AS user_id,
+
         document_id AS answer_id,
+        pseudo AS user_id,
         questionid AS question_id,
         categorie AS category,
         resultat,

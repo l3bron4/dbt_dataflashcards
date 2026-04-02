@@ -12,7 +12,7 @@ renamed as (
         LENGTH(recto) AS question_length,
         verso as answer_text,
         LENGTH(verso) AS answer_length,
-        CAST(date_creation as date) as created_at
+        PARSE_DATE('%d/%m/%Y', date_creation) as created_at, --ligne qui plante
     from source
     where id_unique is not null -- Nettoyage des lignes vides que tu as détectées
 )
