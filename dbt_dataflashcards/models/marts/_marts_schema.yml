@@ -1,0 +1,35 @@
+models:
+  - name: dim_date_day
+    columns:
+      - name: date_day
+        description: PK
+        tests:
+          - unique
+          - not_null
+
+
+  - name: dim_questions
+    columns:
+      - name: question_id
+        description: PK
+        tests:
+          - unique
+          - not_null
+
+
+  - name: dim_users
+    columns:
+      - name: user_id
+        description: PK
+        tests:
+          - unique
+          - not_null
+
+
+  - name: fact_answers
+    columns:
+      - name: answer_id
+        description: PK
+        tests:
+          - unique
+          - not_null
