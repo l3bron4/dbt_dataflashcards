@@ -33,4 +33,3 @@ SELECT
     END AS is_weekend
 FROM 
     generated_dates
-ORDER BY date_day
