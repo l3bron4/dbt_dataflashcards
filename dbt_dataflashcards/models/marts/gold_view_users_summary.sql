@@ -3,7 +3,7 @@ WITH users_summary_part1 AS (
         user_id,
         DATE_TRUNC(MIN(answer_date), DAY) AS first_log_day, -- to avoid join with dim_users
         DATE_TRUNC(MAX(answer_date), DAY) AS last_log_day,
-        SUM(reflexion_time) AS time_spend,
+        SUM(reflexion_time) AS time_spend, -- changer le format
         COUNTIF(is_pass = TRUE) AS nb_pass,
         COUNTIF(is_pass = FALSE) AS nb_fail,
         COUNT(DISTINCT answer_id) AS nb_answer,
