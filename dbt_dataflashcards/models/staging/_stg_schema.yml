@@ -1,15 +1,25 @@
 models:
   - name: stg_raw_data_dataflashcards__analytics_promo_raw
     columns:
-      - name: document_id
+      - name: answer_id
         description: PK
         tests:
           - unique
           - not_null
+      - name: resultat
+        description: 2 options for users 'réussi' (pass) or 'à revoir' (fail)
+        tests:
+          - accepted_values:
+              values:
+                - réussi
+                - à revoir
+
+
   - name: stg_seed__raw_questions
     columns:
-      - name: id_unique
+      - name: question_id
         description: PK
         tests:
           - unique
           - not_null
+      - name: base_id

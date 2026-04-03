@@ -14,3 +14,4 @@ sources:
               count: 2
               period: day
           loaded_at_field: ingested_at
+

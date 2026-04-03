@@ -44,8 +44,6 @@ models:
       +materialized: view
     marts: 
       +materialized: table
-    example:
-      +materialized: table
 
 seeds:
   dbt_dataflashcards_florent:
