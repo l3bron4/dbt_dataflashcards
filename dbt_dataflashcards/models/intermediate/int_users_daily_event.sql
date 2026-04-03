@@ -12,7 +12,7 @@ WITH only_pass_distinct AS(
 nb_pass_new_question_table AS(
     SELECT
         user_id,
-        DATE(DATE_TRUNC(answer_date, DAY)) AS answer_day,
+        DATE_TRUNC(answer_date, DAY) AS answer_day,
         COUNT(question_id_distinct) AS nb_pass_distinct
     FROM only_pass_distinct
     GROUP BY user_id, answer_day
@@ -23,7 +23,7 @@ nb_pass_new_question_table AS(
 daily_basics_stats AS(
     SELECT
         user_id,
-        DATE(DATE_TRUNC(answer_date, DAY)) AS record_date,
+        DATE_TRUNC(answer_date, DAY) AS record_date,
         SUM(reflexion_time) AS time_spend_daily, -- voir si conversion et si arrondir??
         COUNTIF(is_pass = true) AS nb_pass_daily,
         COUNTIF(is_pass = false) AS nb_fail_daily,

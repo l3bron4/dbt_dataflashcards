@@ -1,6 +1,7 @@
 WITH only_most_updated_version AS(
     SELECT 
-        * 
+        TIMESTAMP(created_at) AS created_at,
+        question_id,
     FROM {{ ref('dim_questions') }}
     QUALIFY ROW_NUMBER() OVER(PARTITION BY base_id ORDER BY version DESC) = 1 -- to remove version dupplicate of the same base_id question
     ORDER BY question_id

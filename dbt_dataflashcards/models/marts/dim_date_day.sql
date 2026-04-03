@@ -19,7 +19,7 @@ generated_dates AS (
 )
 
 SELECT
-    date_day,
+    TIMESTAMP(date_day) AS date_day,
     EXTRACT(YEAR FROM date_day) AS year,
     EXTRACT(MONTH FROM date_day) AS month,
     EXTRACT(DAY FROM date_day) AS day,
@@ -33,4 +33,3 @@ SELECT
     END AS is_weekend
 FROM 
     generated_dates
-ORDER BY date_day
