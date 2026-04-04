@@ -7,6 +7,7 @@ WITH users_summary_part1 AS (
         COUNTIF(is_pass = TRUE) AS nb_pass,
         COUNTIF(is_pass = FALSE) AS nb_fail,
         COUNT(DISTINCT answer_id) AS nb_answer,
+        ROUND(100 * COUNTIF(is_pass = TRUE) / COUNT(DISTINCT answer_id), 2) AS pct_pass,
         IF(COUNT(answer_id) < 10, TRUE, FALSE) AS under_ten_answer, -- il faudra mettre la variable métier en tête
         IF(COUNT(answer_id) > 10 AND DATE_DIFF(CURRENT_DATE(), DATE(MAX(answer_date)), DAY) < 7, TRUE, FALSE) AS is_active, -- il faudra mettre la variable métier en tête
     FROM {{ ref('fact_answers') }}
@@ -36,6 +37,7 @@ SELECT
     nb_pass,
     nb_fail,
     nb_answer,
+    pct_pass,
     pct_progress,
     is_engaged,
     under_ten_answer,
