@@ -1,0 +1,10 @@
+snapshots:
+  - name: questions_history_snapshot
+    relation: ref('gold_view_questions_stats')
+    config: 
+      target_schema: dbt_dataflashcards_florent
+      target_database: my-project-florent-bq
+      unique_key: question_id
+      strategy: check
+      check_cols: ['question_id', 'version', 'in_prod']
+      hard_deletes: ignore
