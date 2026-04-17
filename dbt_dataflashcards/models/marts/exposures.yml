@@ -1,0 +1,24 @@
+exposures:
+  - name: questions_data
+    label: questions_data
+    type: dashboard
+    maturity: high
+    url: https://prod-ch-a.online.tableau.com/#/site/florentsocrate-62975ef42b/views/dataflashcards/Questions?:iid=4
+    description: 'Exposure for questions data'
+    depends_on:
+      - ref('gold_view_questions_stats')
+    owner:
+      name: Florent SOCRATE
+      email: florent.socrate@hotmail.fr
+
+  - name: users_data
+    label: users_data
+    type: dashboard
+    maturity: high
+    url: https://prod-ch-a.online.tableau.com/#/site/florentsocrate-62975ef42b/views/dataflashcards/Feuille1?:iid=1
+    description: 'Exposure for users data'
+    depends_on:
+      - ref('gold_view_users_summary')
+    owner:
+      name: Florent SOCRATE
+      email: florent.socrate@hotmail.fr
