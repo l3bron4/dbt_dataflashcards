@@ -33,7 +33,7 @@ SELECT
   pct_pass,
   pct_fail,
   nb_answer,
-  avg_reflexion_time, -- bcq de null dans les données, à checker.
+  avg_reflexion_time,
 FROM question_in_prod d
 LEFT JOIN answers_stats f
   ON d.question_id = f.question_id
