@@ -31,9 +31,9 @@ SELECT
   in_prod,
   last_answer_date,
   nb_pass,
-  nb_pass / nb_answer AS pct_pass,
+  100 * nb_pass / nb_answer AS pct_pass,
   nb_fail,
-  nb_fail / nb_answer AS pct_fail,
+  100 * nb_fail / nb_answer AS pct_fail,
   nb_answer,
   avg_reflexion_time,
 FROM question_in_prod d
