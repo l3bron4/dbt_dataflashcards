@@ -21,7 +21,7 @@ users_summary_part2 AS (
         user_id,
         SUM(nb_pass_distinct) AS nb_pass_distinct_total,
         --nb_questions_in_prod, choisir la bonne date qui correspond à last_log_date
-        SUM(pct_progress_daily) AS pct_progress,
+        IF(SUM(pct_progress_daily) >= 100, 100, SUM(pct_progress_daily)) AS pct_progress,
         IF(SUM(pct_progress_daily) > 75, TRUE, FALSE) AS is_engaged, -- true if pct_progress > 75% -- il faudra mettre la variable métier en tête
     FROM {{ ref('int_users_daily_event') }}
     GROUP BY user_id
