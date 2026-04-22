@@ -1,7 +1,7 @@
 version: 2
 
 seeds:
-  - name: raw_questions
+  - name: raw_questions_2
     description: "google sheet document with flashcards"
     docs: # changed to config in v1.10
         node_color: 'purple'
@@ -25,3 +25,5 @@ seeds:
         description: the answer text
       - name: date_creation
         description: when the question version where created
+      - name: in_prod
+        description: Boolean, TRUE if the question in on app. The most updated version.
