@@ -1,5 +1,5 @@
 with source as (
-    select * from {{ ref('raw_questions') }}
+    select * from {{ ref('raw_questions_2') }}
 ),
 
 renamed as (
@@ -13,6 +13,7 @@ renamed as (
         verso as answer_text,
         LENGTH(verso) AS answer_length,
         PARSE_DATE('%d/%m/%Y', date_creation) as created_at, 
+        in_prod,
     from source
     where id_unique is not null -- remove null lines from csv source
 )
