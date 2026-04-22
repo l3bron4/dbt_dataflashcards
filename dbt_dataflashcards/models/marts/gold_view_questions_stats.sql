@@ -1,7 +1,6 @@
 WITH question_in_prod AS(
   SELECT 
     *,
-    TRUE AS in_prod,
   FROM {{ ref('dim_questions') }}
   QUALIFY ROW_NUMBER() OVER(PARTITION BY base_id ORDER BY version DESC) = 1 -- to keep the most updated version  
 ),
