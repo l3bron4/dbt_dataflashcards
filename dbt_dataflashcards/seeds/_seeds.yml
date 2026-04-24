@@ -1,7 +1,7 @@
 version: 2
 
 seeds:
-  - name: raw_questions_2
+  - name: raw_questions_3
     description: "google sheet document with flashcards"
     docs: # changed to config in v1.10
         node_color: 'purple'
