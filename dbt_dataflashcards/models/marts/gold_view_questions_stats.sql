@@ -2,7 +2,7 @@ WITH question_in_prod AS(
   SELECT 
     *,
   FROM {{ ref('dim_questions') }}
-  -- QUALIFY ROW_NUMBER() OVER(PARTITION BY base_id ORDER BY version DESC) = 1 -- to keep the most updated version  
+  -- QUALIFY ROW_NUMBER() OVER(PARTITION BY base_id ORDER BY version DESC) = 1 -- to keep the most updated version  -- finally removed to keep all version records in the same table
 ),
 
 answers_stats AS(

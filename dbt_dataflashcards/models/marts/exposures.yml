@@ -1,4 +1,18 @@
 exposures:
+  - name: views_for_dashboards
+    label : views_for_dashboards
+    type : dashboard
+    maturity: high
+    url : https://datastudio.google.com/s/uh3Xf2osHxg
+    description: 'Exposure to direction and content dashboard'
+    depends_on:
+      - ref('dash_fact_answers')
+      - ref('dash_fact_users_logs_hour')
+      - ref('dash_users_day')
+    owner:
+      name: Florent SOCRATE
+      email: florent.socrate@hotmail.fr
+
   - name: questions_data
     label: questions_data
     type: dashboard
